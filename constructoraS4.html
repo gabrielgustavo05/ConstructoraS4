@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S4 | Construcción Retail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gris-oscuro: #2a2a2a;
+            --gris-medio: #4a4a4a;
+            --gris-claro: #6b7280;
+            --gris-suave: #9ca3af;
+            --gris-fondo: #f3f4f6;
+            --celeste-oscuro: #0e7490;
+            --celeste-medio: #0891b2;
+            --celeste-claro: #22d3ee;
+            --celeste-sutil: #ecfeff;
+            --blanco: #ffffff;
+            --sombra-btn: 0 4px 14px rgba(14, 116, 144, 0.35);
+            --sombra-btn-hover: 0 6px 20px rgba(14, 116, 144, 0.5);
+            --sombra-card: 0 4px 24px rgba(0, 0, 0, 0.08);
+            --sombra-card-hover: 0 8px 32px rgba(14, 116, 144, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gris-medio);
+            background-color: var(--blanco);
+            overflow-x: hidden;
+        }
+
+        /* ========== LOGO ========== */
+        .logo-s4 {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-decoration: none;
+            line-height: 1;
+        }
+        .logo-s4 .letra-s {
+            color: var(--gris-oscuro);
+        }
+        .logo-s4 .letra-4 {
+            color: var(--celeste-oscuro);
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar-s4 {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 0.8rem 0;
+            transition: box-shadow 0.3s ease;
+        }
+        .navbar-s4.scrolled {
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+        .navbar-s4 .nav-link {
+            color: var(--gris-medio);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 1.1rem !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .navbar-s4 .nav-link:hover {
+            color: var(--celeste-oscuro);
+            background: var(--celeste-sutil);
+        }
+
+        /* ========== BOTONES ========== */
+        .btn-s4-primary {
+            background: var(--celeste-oscuro);
+            color: var(--blanco);
+            border: 2px solid var(--celeste-oscuro);
+            padding: 0.65rem 1.8rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 10px;
+            box-shadow: var(--sombra-btn);
+            transition: all 0.3s ease;
+            letter-spacing: 0.2px;
+        }
+        .btn-s4-primary:hover {
+            background: var(--celeste-medio);
+            border-color: var(--celeste-medio);
+            color: var(--blanco);
+            box-shadow: var(--sombra-btn-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-s4-outline {
+            background: transparent;
+            color: var(--celeste-oscuro);
+            border: 2px solid var(--celeste-oscuro);
+            padding: 0.65rem 1.8rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(14, 116, 144, 0.15);
+            transition: all 0.3s ease;
+            letter-spacing: 0.2px;
+        }
+        .btn-s4-outline:hover {
+            background: var(--celeste-oscuro);
+            color: var(--blanco);
+            box-shadow: var(--sombra-btn-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-s4-white {
+            background: var(--blanco);
+            color: var(--celeste-oscuro);
+            border: 2px solid var(--blanco);
+            padding: 0.65rem 1.8rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25);
+            transition: all 0.3s ease;
+        }
+        .btn-s4-white:hover {
+            background: transparent;
+            color: var(--blanco);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .btn-s4-gray {
+            background: var(--gris-fondo);
+            color: var(--gris-medio);
+            border: 2px solid #d1d5db;
+            padding: 0.65rem 1.8rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+        .btn-s4-gray:hover {
+            background: var(--gris-oscuro);
+            color: var(--blanco);
+            border-color: var(--gris-oscuro);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        /* ========== HERO ========== */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(160deg, var(--gris-fondo) 0%, #e0f2fe 40%, var(--celeste-sutil) 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(14,116,144,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(107,114,128,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(14,116,144,0.08);
+            border: 1px solid rgba(14,116,144,0.15);
+            color: var(--celeste-oscuro);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            color: var(--gris-oscuro);
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+        }
+        .hero-title span {
+            color: var(--celeste-oscuro);
+        }
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--gris-claro);
+            line-height: 1.7;
+            max-width: 520px;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        .hero-image-wrapper {
+            position: relative;
+        }
+        .hero-image-wrapper img {
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            width: 100%;
+            object-fit: cover;
+        }
+        .hero-float-card {
+            position: absolute;
+            background: var(--blanco);
+            border-radius: 14px;
+            padding: 1rem 1.3rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            animation: floatCard 4s ease-in-out infinite;
+        }
+        .hero-float-card.card-1 {
+            bottom: -20px;
+            left: -30px;
+        }
+        .hero-float-card.card-2 {
+            top: 30px;
+            right: -20px;
+            animation-delay: 2s;
+        }
+        .float-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .float-icon.blue {
+            background: rgba(14,116,144,0.1);
+            color: var(--celeste-oscuro);
+        }
+        .float-icon.gray {
+            background: var(--gris-fondo);
+            color: var(--gris-medio);
+        }
+        .float-text strong {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--gris-oscuro);
+        }
+        .float-text small {
+            font-size: 0.75rem;
+            color: var(--gris-suave);
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* ========== SECCIONES GENERALES ========== */
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--celeste-oscuro);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+        }
+        .section-tag::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--celeste-oscuro);
+            border-radius: 2px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--gris-oscuro);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--gris-claro);
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        /* ========== SERVICIOS ========== */
+        .services-section {
+            padding: 6rem 0;
+            background: var(--blanco);
+        }
+        .service-card {
+            background: var(--blanco);
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--celeste-oscuro), var(--celeste-claro));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        .service-card:hover {
+            box-shadow: var(--sombra-card-hover);
+            border-color: rgba(14,116,144,0.2);
+            transform: translateY(-4px);
+        }
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(14,116,144,0.08), rgba(14,116,144,0.15));
+            color: var(--celeste-oscuro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover .service-icon {
+            background: var(--celeste-oscuro);
+            color: var(--blanco);
+        }
+        .service-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gris-oscuro);
+            margin-bottom: 0.6rem;
+        }
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--gris-claro);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ========== PROYECTOS ========== */
+        .projects-section {
+            padding: 6rem 0;
+            background: var(--gris-fondo);
+        }
+        .project-card {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--sombra-card);
+            transition: all 0.4s ease;
+        }
+        .project-card:hover {
+            box-shadow: var(--sombra-card-hover);
+            transform: translateY(-6px);
+        }
+        .project-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+            padding: 2rem 1.5rem 1.5rem;
+        }
+        .project-tag {
+            display: inline-block;
+            background: rgba(14,116,144,0.9);
+            color: var(--blanco);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.25rem 0.7rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .project-overlay h5 {
+            color: var(--blanco);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        .project-overlay small {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+        }
+
+        /* ========== STATS ========== */
+        .stats-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--gris-oscuro) 0%, #1a1a2e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(14,116,144,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        .stat-number {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--celeste-claro);
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            font-weight: 500;
+        }
+
+        /* ========== PROCESO ========== */
+        .process-section {
+            padding: 6rem 0;
+            background: var(--blanco);
+        }
+        .process-step {
+            text-align: center;
+            padding: 1.5rem;
+            position: relative;
+        }
+        .step-number {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 3px solid var(--celeste-oscuro);
+            color: var(--celeste-oscuro);
+            font-size: 1.4rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            background: var(--blanco);
+            transition: all 0.3s ease;
+        }
+        .process-step:hover .step-number {
+            background: var(--celeste-oscuro);
+            color: var(--blanco);
+        }
+        .process-connector {
+            position: absolute;
+            top: 48px;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, var(--celeste-oscuro) 0, var(--celeste-oscuro) 6px, transparent 6px, transparent 12px);
+            z-index: 0;
+        }
+        .process-step h5 {
+            font-weight: 700;
+            color: var(--gris-oscuro);
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+        .process-step p {
+            font-size: 0.88rem;
+            color: var(--gris-claro);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ========== TESTIMONIOS ========== */
+        .testimonials-section {
+            padding: 6rem 0;
+            background: var(--gris-fondo);
+        }
+        .testimonial-card {
+            background: var(--blanco);
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            box-shadow: var(--sombra-card-hover);
+            border-color: rgba(14,116,144,0.2);
+        }
+        .testimonial-stars {
+            color: #f59e0b;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .testimonial-card blockquote {
+            font-size: 0.95rem;
+            color: var(--gris-medio);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 1.2rem;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--celeste-sutil);
+        }
+        .testimonial-author strong {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--gris-oscuro);
+        }
+        .testimonial-author small {
+            font-size: 0.78rem;
+            color: var(--gris-suave);
+        }
+
+        /* ========== CTA ========== */
+        .cta-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--celeste-oscuro) 0%, #065f73 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            right: -80px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--blanco);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+        .cta-desc {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.7;
+            max-width: 550px;
+            margin-bottom: 2rem;
+        }
+
+        /* ========== CLIENTES ========== */
+        .clients-section {
+            padding: 4rem 0;
+            background: var(--blanco);
+        }
+        .client-logo {
+            height: 40px;
+            opacity: 0.3;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+        .client-logo:hover {
+            opacity: 0.7;
+            filter: grayscale(0%);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer-s4 {
+            background: var(--gris-oscuro);
+            padding: 4rem 0 0;
+            color: rgba(255,255,255,0.6);
+        }
+        .footer-s4 h6 {
+            color: var(--blanco);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.2rem;
+        }
+        .footer-s4 a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.3s ease;
+            display: inline-block;
+            margin-bottom: 0.4rem;
+        }
+        .footer-s4 a:hover {
+            color: var(--celeste-claro);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            font-size: 0.82rem;
+        }
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0;
+            transition: all 0.3s ease;
+        }
+        .footer-social a:hover {
+            background: var(--celeste-oscuro);
+            border-color: var(--celeste-oscuro);
+            color: var(--blanco);
+        }
+
+        /* ========== SCROLL TOP ========== */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: var(--celeste-oscuro);
+            color: var(--blanco);
+            border: 2px solid var(--celeste-oscuro);
+            box-shadow: var(--sombra-btn);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .scroll-top:hover {
+            background: var(--celeste-medio);
+            border-color: var(--celeste-medio);
+            transform: translateY(-3px);
+            box-shadow: var(--sombra-btn-hover);
+        }
+
+        /* ========== ANIMACIONES ========== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 991px) {
+            .hero-image-wrapper {
+                margin-top: 3rem;
+            }
+            .hero-float-card.card-1 {
+                left: 10px;
+                bottom: -15px;
+            }
+            .hero-float-card.card-2 {
+                right: 10px;
+            }
+            .process-connector {
+                display: none;
+            }
+        }
+        @media (max-width: 767px) {
+            .hero-section {
+                text-align: center;
+            }
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center !important;
+            }
+            .hero-float-card.card-1,
+            .hero-float-card.card-2 {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                right: auto;
+                top: auto;
+                margin: 0.5rem auto;
+                animation: none;
+            }
+            .hero-image-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .stat-item {
+                padding: 1rem 0.5rem;
+            }
+            .footer-s4 {
+                text-align: center;
+            }
+            .footer-social {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar navbar-expand-lg navbar-s4 fixed-top" id="mainNav">
+        <div class="container">
+            <a class="logo-s4" href="#">S<span class="letra-s">S</span><span class="letra-4">4</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+                <ul class="navbar-nav align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#proceso">Proceso</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-s4-primary btn-sm" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero-section" id="inicio">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-badge">
+                        <i class="bi bi-building"></i>
+                        Especialistas en Retail
+                    </div>
+                    <h1 class="hero-title">
+                        Construimos el<br><span>futuro del retail</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Diseñamos y construimos espacios comerciales que transforman la experiencia del cliente y potencian tus ventas. Más de 15 años de experiencia en el mercado.
+                    </p>
+                    <div class="d-flex gap-3 hero-buttons flex-wrap">
+                        <a href="#proyectos" class="btn btn-s4-primary">
+                            Ver proyectos <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                        <a href="#contacto" class="btn btn-s4-outline">
+                            Solicitar presupuesto
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image-wrapper">
+                        <img src="https://picsum.photos/seed/retail-construction-s4/700/500.jpg" alt="Construcción retail S4">
+                        <div class="hero-float-card card-1">
+                            <div class="float-icon blue">
+                                <i class="bi bi-check-circle"></i>
+                            </div>
+                            <div class="float-text">
+                                <strong>+120 Proyectos</strong>
+                                <small>Entregados a tiempo</small>
+                            </div>
+                        </div>
+                        <div class="hero-float-card card-2">
+                            <div class="float-icon gray">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <div class="float-text">
+                                <strong>ISO 9001</strong>
+                                <small>Certificación vigente</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CLIENTES ========== -->
+    <section class="clients-section">
+        <div class="container">
+            <p class="text-center mb-4" style="font-size: 0.82rem; color: var(--gris-suave); text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Confían en nosotros</p>
+            <div class="row align-items-center justify-content-center g-4">
+                <div class="col-4 col-md-2 text-center">
+                    <div style="font-size: 1.6rem; font-weight: 800; color: var(--gris-oscuro);" class="client-logo d-inline-block">ZARA</div>
+                </div>
+                <div class="col-4 col-md-2 text-center">
+                    <div style="font-size: 1.6rem; font-weight: 800; color: var(--gris-oscuro);" class="client-logo d-inline-block">H&M</div>
+                </div>
+                <div class="col-4 col-md-2 text-center">
+                    <div style="font-size: 1.4rem; font-weight: 800; color: var(--gris-oscuro);" class="client-logo d-inline-block">NIKE</div>
+                </div>
+                <div class="col-4 col-md-2 text-center">
+                    <div style="font-size: 1.3rem; font-weight: 800; color: var(--gris-oscuro);" class="client-logo d-inline-block">ADIDAS</div>
+                </div>
+                <div class="col-4 col-md-2 text-center">
+                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--gris-oscuro);" class="client-logo d-inline-block">C&A</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SERVICIOS ========== -->
+    <section class="services-section" id="servicios">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-tag justify-content-center">Servicios</div>
+                <h2 class="section-title">Soluciones integrales<br>para tu negocio</h2>
+                <p class="section-desc mx-auto">Cubrimos todas las etapas de tu proyecto retail, desde la concepción hasta la entrega final del espacio.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 fade-up">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-rulers"></i>
+                        </div>
+                        <h4>Diseño de Locales</h4>
+                        <p>Planificación y diseño de espacios comerciales optimizados para la experiencia del cliente y maximización de ventas.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.1s;">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-building-gear"></i>
+                        </div>
+                        <h4>Construcción Llave en Mano</h4>
+                        <p>Gestión completa de obra desde los cimientos hasta la entrega final, con plazos y presupuestos definidos.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.2s;">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-arrow-repeat"></i>
+                        </div>
+                        <h4>Fit Out & Remodelación</h4>
+                        <p>Renovación y adaptación de locales existentes para actualizar tu imagen corporativa y mejorar la funcionalidad.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.3s;">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-shop-window"></i>
+                        </div>
+                        <h4>Visual Merchandising</h4>
+                        <p>Diseño e implementación de vitrinas y espacios de exhibición que cautivan y atraen al consumidor.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.4s;">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-lightbulb"></i>
+                        </div>
+                        <h4>Iluminación Comercial</h4>
+                        <p>Proyectos de iluminación LED y sistemas de luz que realzan productos y generan ambientes únicos.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.5s;">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <h4>Mantenimiento Retail</h4>
+                        <p>Servicio de mantenimiento preventivo y correctivo para mantener tus locales en óptimas condiciones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROYECTOS ========== -->
+    <section class="projects-section" id="proyectos">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-end mb-5 gap-3">
+                <div>
+                    <div class="section-tag">Proyectos</div>
+                    <h2 class="section-title mb-0">Obras que hablan<br>por sí solas</h2>
+                </div>
+                <a href="#" class="btn btn-s4-gray">
+                    Ver todos <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 fade-up">
+                    <div class="project-card">
+                        <img src="https://picsum.photos/seed/tienda-moda-s4/600/400.jpg" alt="Tienda de moda">
+                        <div class="project-overlay">
+                            <span class="project-tag">Moda</span>
+                            <h5>Tienda Flagship Zona Sur</h5>
+                            <small>450 m² — Buenos Aires</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.1s;">
+                    <div class="project-card">
+                        <img src="https://picsum.photos/seed/supermercado-s4/600/400.jpg" alt="Supermercado">
+                        <div class="project-overlay">
+                            <span class="project-tag">Supermercado</span>
+                            <h5>Supermercado Premium</h5>
+                            <small>1,200 m² — Córdoba</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.2s;">
+                    <div class="project-card">
+                        <img src="https://picsum.photos/seed/farmacia-s4/600/400.jpg" alt="Farmacia">
+                        <div class="project-overlay">
+                            <span class="project-tag">Farmacia</span>
+                            <h5>Red de Farmacias — 8 sucursales</h5>
+                            <small>Formato estándar — Nacional</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.3s;">
+                    <div class="project-card">
+                        <img src="https://picsum.photos/seed/shopping-center-s4/600/400.jpg" alt="Shopping">
+                        <div class="project-overlay">
+                            <span class="project-tag">Shopping</span>
+                            <h5>Pasaje Comercial Centro</h5>
+                            <small>3,000 m² — Rosario</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.4s;">
+                    <div class="project-card">
+                        <img src="https://picsum.photos/seed/restaurant-s4/600/400.jpg" alt="Restaurant">
+                        <div class="project-overlay">
+                            <span class="project-tag">Gastronomía</span>
+                            <h5>Restaurante Gourmet</h5>
+                            <small>220 m² — Palermo</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.5s;">
+                    <div class="project-card">
+                        <img src="https://picsum.photos/seed/tienda-deporte-s4/600/400.jpg" alt="Tienda deportiva">
+                        <div class="project-overlay">
+                            <span class="project-tag">Deportes</span>
+                            <h5>Tienda Deportiva Premium</h5>
+                            <small>380 m² — Mendoza</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== STATS ========== -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-lg-3 fade-up">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="120">0</div>
+                        <div class="stat-label">Proyectos completados</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 fade-up" style="transition-delay: 0.1s;">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="15">0</div>
+                        <div class="stat-label">Años de experiencia</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 fade-up" style="transition-delay: 0.2s;">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="45000">0</div>
+                        <div class="stat-label">M² construidos</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 fade-up" style="transition-delay: 0.3s;">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="98">0</div>
+                        <div class="stat-label">% satisfacción</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROCESO ========== -->
+    <section class="process-section" id="proceso">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-tag justify-content-center">Proceso</div>
+                <h2 class="section-title">Cómo trabajamos</h2>
+                <p class="section-desc mx-auto">Un metodología probada en más de 120 proyectos para garantizar resultados excepcionales.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 fade-up">
+                    <div class="process-step">
+                        <div class="process-connector d-none d-lg-block"></div>
+                        <div class="step-number">01</div>
+                        <h5>Consulta inicial</h5>
+                        <p>Analizamos tus necesidades, presupuesto y plazos para definir el alcance del proyecto.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 fade-up" style="transition-delay: 0.1s;">
+                    <div class="process-step">
+                        <div class="process-connector d-none d-lg-block"></div>
+                        <div class="step-number">02</div>
+                        <h5>Diseño y planificación</h5>
+                        <p>Creamos planos 3D, seleccionamos materiales y definimos cronogramas detallados.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 fade-up" style="transition-delay: 0.2s;">
+                    <div class="process-step">
+                        <div class="process-connector d-none d-lg-block"></div>
+                        <div class="step-number">03</div>
+                        <h5>Ejecución de obra</h5>
+                        <p>Construimos con equipos especializados, reporting semanal y control de calidad.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 fade-up" style="transition-delay: 0.3s;">
+                    <div class="process-step">
+                        <div class="step-number">04</div>
+                        <h5>Entrega final</h5>
+                        <p>Inspección final, ajustes de detalle y entrega del local listo para operar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIOS ========== -->
+    <section class="testimonials-section" id="testimonios">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-tag justify-content-center">Testimonios</div>
+                <h2 class="section-title">Lo que dicen<br>nuestros clientes</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 fade-up">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <blockquote>"S4 construyó nuestra tienda flagship en tiempo récord. El resultado superó todas nuestras expectativas. El equipo fue profesional en cada detalle."</blockquote>
+                        <div class="testimonial-author">
+                            <img src="https://picsum.photos/seed/person-maria/100/100.jpg" alt="María González" class="testimonial-avatar">
+                            <div>
+                                <strong>María González</strong>
+                                <small>Directora de Expansión — Moda Retail</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.1s;">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <blockquote>"Llevamos 5 años trabajando con S4 en todas nuestras aperturas. Su consistencia y calidad es inigualable. Son socios estratégicos de nuestro negocio."</blockquote>
+                        <div class="testimonial-author">
+                            <img src="https://picsum.photos/seed/person-carlos/100/100.jpg" alt="Carlos Méndez" class="testimonial-avatar">
+                            <div>
+                                <strong>Carlos Méndez</strong>
+                                <small>CEO — FarmaciaPlus</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.2s;">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill"></i>
+                            bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <blockquote>"La remodelación de nuestro supermercado fue impecable. No tuvimos que cerrar durante la obra y los clientes notaron el cambio desde el día uno."</blockquote>
+                        <div class="testimonial-author">
+                            <img src="https://picsum.photos/seed/person-lucia/100/100.jpg" alt="Lucía Pereyra" class="testimonial-avatar">
+                            <div>
+                                <strong>Lucía Pereyra</strong>
+                                <small>Gerente General — SuperMax</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta-section" id="contacto">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h2 class="cta-title">¿Listo para construir<br>tu próximo local?</h2>
+                    <p class="cta-desc">Cuéntanos tu proyecto y te enviamos una propuesta personalizada sin compromiso en menos de 48 horas.</p>
+                </div>
+                <div class="col-lg-5 text-lg-end">
+                    <div class="d-flex flex-column flex-lg-row gap-3 justify-content-lg-end">
+                        <a href="tel:+5491100000000" class="btn btn-s4-white">
+                            <i class="bi bi-telephone me-2"></i>Llamar ahora
+                        </a>
+                        <a href="mailto:info@s4construccion.com" class="btn btn-s4-outline" style="border-color: var(--blanco); color: var(--blanco);">
+                            <i class="bi bi-envelope me-2"></i>Enviar email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer-s4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <a class="logo-s4 d-inline-block mb-3" href="#">
+                        <span class="letra-s">S</span><span class="letra-4">4</span>
+                    </a>
+                    <p style="font-size: 0.9rem; line-height: 1.7; max-width: 320px;">
+                        Especialistas en construcción retail. Más de 15 años transformando espacios comerciales en experiencias únicas.
+                    </p>
+                    <div class="footer-social mt-3">
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6>Servicios</h6>
+                    <a href="#">Diseño</a><br>
+                    <a href="#">Construcción</a><br>
+                    <a href="#">Fit Out</a><br>
+                    <a href="#">Visual Merch.</a><br>
+                    <a href="#">Mantenimiento</a>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6>Empresa</h6>
+                    <a href="#">Nosotros</a><br>
+                    <a href="#">Proyectos</a><br>
+                    <a href="#">Proceso</a><br>
+                    <a href="#">Blog</a><br>
+                    <a href="#">Trabajá con nosotros</a>
+                </div>
+                <div class="col-lg-4">
+                    <h6>Contacto</h6>
+                    <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">
+                        <i class="bi bi-geo-alt me-2" style="color: var(--celeste-claro);"></i>
+                        Av. Corrientes 1234, Piso 8<br>CABA, Argentina
+                    </p>
+                    <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">
+                        <i class="bi bi-telephone me-2" style="color: var(--celeste-claro);"></i>
+                        +54 9 11 0000-0000
+                    </p>
+                    <p style="font-size: 0.88rem; margin-bottom: 0;">
+                        <i class="bi bi-envelope me-2" style="color: var(--celeste-claro);"></i>
+                        info@s4construccion.com
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <span>&copy; 2025 S4 Construcción Retail. Todos los derechos reservados.</span>
+                <span class="mt-2 mt-md-0">
+                    <a href="#" style="margin-bottom: 0; margin-right: 1rem;">Privacidad</a>
+                    <a href="#" style="margin-bottom: 0;">Términos</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== SCROLL TOP ========== -->
+    <button class="scroll-top" id="scrollTopBtn" aria-label="Volver arriba">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('mainNav');
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 400) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const target = this.getAttribute('href');
+                if (target === '#') return;
+                e.preventDefault();
+                const el = document.querySelector(target);
+                if (el) {
+                    const offset = 80;
+                    const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                    // Close mobile menu
+                    const navCollapse = document.getElementById('navMenu');
+                    if (navCollapse.classList.contains('show')) {
+                        new bootstrap.Collapse(navCollapse).hide();
+                    }
+                }
+            });
+        });
+
+        // Fade-up on scroll (Intersection Observer)
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        fadeElements.forEach(el => fadeObserver.observe(el));
+
+        // Counter animation
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let statsAnimated = false;
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !statsAnimated) {
+                    statsAnimated = true;
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) statsObserver.observe(statsSection);
+
+        function animateCounters() {
+            statNumbers.forEach(num => {
+                const target = parseInt(num.dataset.target);
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+
+                    let display;
+                    if (target >= 1000) {
+                        display = Math.floor(current).toLocaleString('es-AR');
+                    } else {
+                        display = Math.floor(current);
+                    }
+
+                    if (num.closest('.stat-item').querySelector('.stat-label').textContent.includes('%')) {
+                        display += '%';
+                    } else if (target >= 1000) {
+                        display += '+';
+                    } else {
+                        display += '+';
+                    }
+
+                    num.textContent = display;
+                }, 16);
+            });
+        }
+    </script>
+</body>
+</html>
